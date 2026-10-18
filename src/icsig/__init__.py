@@ -5,5 +5,6 @@ phenomenal consciousness, IIT, or ICSI-G.
 """
 
 from .models import FiniteBinaryTransitionSystem
+from .influence import deterministic_successor_indices, unweighted_boolean_influence_edges
 
-__all__ = ["FiniteBinaryTransitionSystem"]
+__all__ = ["FiniteBinaryTransitionSystem", "deterministic_successor_indices", "unweighted_boolean_influence_edges"]
