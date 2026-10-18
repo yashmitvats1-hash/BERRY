@@ -94,3 +94,13 @@ A valid theoretical discriminator is not just K_A != K_B or different graph/shea
 - be independently reproducible.
 
 Until those conditions hold, classify the result as a mathematical distinction or exploratory example, not a consciousness-theoretic result.
+
+
+## Version pinning for IIT comparisons
+
+Use a clearly named comparator for every result:
+- IIT_4_0_2023: the first published IIT 4.0 formulation (Albantakis et al., 2023).
+- IIT_4_0_2026: the later formulation documented by PyPhi / Mayner, Marshall & Tononi (2026), including the intrinsic-information requirement for system φ.
+- IIT_3_0: only for historical reproduction, never as a stand-in for either IIT 4.0 version.
+
+Record exact PyPhi version/commit, formalism preset, system TPM, state, background/marginalization settings, and tie handling. When assessing a purported discriminator, compute both IIT_4_0_2023 and IIT_4_0_2026 where feasible. The fact that outputs differ across IIT versions is a version-sensitivity finding, not by itself an ICSI-G result.
