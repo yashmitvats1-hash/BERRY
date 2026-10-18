@@ -92,3 +92,16 @@ Use one of these labels in every substantive report:
 ## Quality bar for a real advance
 
 A result is a candidate advance only if it has: (a) fully specified inputs and theory objects; (b) an explicit equivalence relation and boundaries; (c) a proof or reproducible computation; (d) an actual comparison against a named version of IIT; (e) a non-arbitrary bridge principle; and (f) a risky discriminating prediction or a meaningful empirical constraint. Confidence language cannot substitute for any of these.
+
+
+## Comparator update: IIT 4.0 (2023) versus the 2026 formulation
+
+Checked against current primary / project sources on 2026-10-18:
+
+- Albantakis et al., *IIT 4.0: Formulating the properties of phenomenal existence in physical terms* (PLOS Computational Biology, published 2023-10-17), is the reference for the first published IIT 4.0 formalism. It identifies experience with the cause-effect structure unfolded from a maximal substrate, and defines overlapping-substrate selection using system integrated information (φ_s). The paper's example code is associated with the PyPhi feature/iit-4.0 branch.
+- PyPhi's current project documentation and 2.0 changelog distinguish IIT_4_0_2023 from IIT_4_0_2026, as well as IIT 3.0. The 2026 update, associated with Mayner, Marshall & Tononi (2026), adds an intrinsic-information requirement to system φ: φ_s = min{φ_c, φ_e, ii(s)}. PyPhi documents that the 2026 value can differ from the 2023 value and that deterministic systems can have φ_s = 0 under the 2026 formalism. The separate version-selection presets are explicit in PyPhi.
+- Marshall et al., *Intrinsic units: identifying a system's causal grain* (Neuroscience of Consciousness, 2026-04-15), expands IIT's framework for identifying causal grain across micro/macro units.
+
+**Research consequence:** “compare against IIT 4.0” is not a reproducible instruction by itself. Every benchmark must pin IIT_4_0_2023 or IIT_4_0_2026 (and the exact PyPhi commit/version), and report both when claims purport to be robust across the 2023 and 2026 formulations. Prior notes about PyPhi 1.2 / IIT 3.0 cannot establish an IIT 4.0 divergence. We must not infer that any IIT formalism predicts a particular step-function outcome in a callosal-decoupling experiment without deriving that prediction from the pinned formalism and an explicit bridge to measurement.
+
+Sources and access dates are recorded in docs/REFERENCES.md.
