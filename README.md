@@ -16,6 +16,7 @@ The immediate work is theoretical specification and reproducibility. **Do not st
 - [DeepSeek offline brief](agent_packets/DEEPSEEK_BRIEF.md) — copy/paste packet for the agent without GitHub access.
 - [Decision log](docs/DECISION_LOG.md) — dated decisions and changes to the research position.
 - [References and comparator versions](docs/REFERENCES.md) — primary sources, including the 2023 and 2026 IIT formulations.
+- [Benchmark 01](benchmarks/01_same_influence_graph_different_dynamics.md) — a minimal reproducible graph/dynamics counterexample.
 
 ## Initial computational scaffold
 
