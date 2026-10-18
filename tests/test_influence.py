@@ -36,7 +36,7 @@ def test_influence_graph_rejects_stochastic_kernel():
         unweighted_boolean_influence_edges(stochastic)
 
 
-def test_influence_graph_is_invariant_to_transition_table_row_ordering_assumption():
+def test_one_unit_identity_map_has_a_self_influence_edge():
     # The helper uses an explicit state-index convention; a 2x2 one-unit
     # deterministic kernel remains straightforward under that convention.
     system = FiniteBinaryTransitionSystem(
