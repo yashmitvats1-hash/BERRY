@@ -105,3 +105,17 @@ Checked against current primary / project sources on 2026-10-18:
 **Research consequence:** “compare against IIT 4.0” is not a reproducible instruction by itself. Every benchmark must pin IIT_4_0_2023 or IIT_4_0_2026 (and the exact PyPhi commit/version), and report both when claims purport to be robust across the 2023 and 2026 formulations. Prior notes about PyPhi 1.2 / IIT 3.0 cannot establish an IIT 4.0 divergence. We must not infer that any IIT formalism predicts a particular step-function outcome in a callosal-decoupling experiment without deriving that prediction from the pinned formalism and an explicit bridge to measurement.
 
 Sources and access dates are recorded in docs/REFERENCES.md.
+
+
+## First project-owned benchmark (2026-10-18)
+
+The repository now contains Benchmark 01 and an executable finite-state example. Two deterministic two-unit systems were defined in state order 00, 01, 10, 11:
+
+- Swap: A_next = B and B_next = A.
+- Invert-plus-copy: A_next = NOT B and B_next = A.
+
+The extraction rule marks an unweighted edge from current unit i to next-time unit j when toggling i changes j's next value for at least one assignment of the other current units. Under this explicit rule, both systems have exactly the reciprocal edge set {A → B, B → A}, while their complete transition kernels and state cycles differ.
+
+**Conclusion:** an unweighted influence graph does not determine the full transition dynamics. This is a mathematical counterexample to unweighted graph sufficiency only. It does not establish that either system is conscious, that their phenomenal character differs, or that IIT treats them as equivalent.
+
+The neutral model validation tests and influence-graph tests total 12. A local test run on a mirrored copy of the committed source passed all 12. A GitHub Actions workflow was added for Python 3.11–3.13; its remote status has not been independently verified in this session.
