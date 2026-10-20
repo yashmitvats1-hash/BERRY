@@ -1,6 +1,6 @@
 # Shared Research Memory: ICSI-G
 
-Last consolidated: 2026-10-18. This file is the working memory for future sessions and agents. Update it when a finding is reproduced, overturned, or superseded; retain the history in DECISION_LOG.md.
+Last consolidated: 2026-10-20. This file is the working memory for future sessions and agents. Update it when a finding is reproduced, overturned, or superseded; retain the history in DECISION_LOG.md.
 
 ## Mission
 
@@ -43,6 +43,17 @@ Arena reported examining 700 reachable two-unit deterministic systems and descri
 
 Limitations recorded: not all source artifacts or exact software commit identities were available, and two-unit deterministic enumeration does not cover stochastic, multiscale, or larger systems. Treat these as reported findings pending reproduction, not yet as verified project results.
 
+**Update 2026-10-20 (reproduction, Arena):** the enumeration was reconstructed and the cautions re-tested against the pinned PyPhi build (commit `134a8f31b…`, formalisms `IIT_4_0_2023` / `IIT_4_0_2026`). Outcomes:
+
+- The "700" figure is reproduced only as (system, state) pairs with a one-step-reachable state: **256 labeled systems exist**; 700 of 1024 pairs are reachable, 324 are Garden-of-Eden (image-size histogram {1:4, 2:84, 3:144, 4:24}). The earlier phrasing "700 systems" is corrected; see DECISION_LOG.md.
+- "Kernels differ while IIT structures are identical" holds only degenerately: the sole identical-profile classes (16 systems in 4 classes) have **empty** CES everywhere. No two systems share a non-empty CES profile.
+- The complex-vs-non-complex caution is confirmed and quantified: in 384 of 700 analyzable states IIT selects singleton complexes while the whole network has φ_s = 0.
+- A tie-free, complex-level case now exists under `IIT_4_0_2023`: Benchmark 01's S and N share the unweighted graph and scalar φ_s = 2.0 but have different CES (Φ 4.0/2 relations vs Φ 2.0/0 relations). This is a mathematical discrimination of the coarse-graph candidate, **not** a phenomenal prediction (no bridge principle).
+- Under `IIT_4_0_2026` the entire deterministic baseline has φ_s = 0 and no complexes: the discrimination is formalism-version-dependent.
+- Coarse-graph merging confirmed: all 16 influence-graph classes contain CES-distinct systems; state dependence confirmed: 236/256 systems have state-dependent non-empty CES, none constant.
+
+See benchmarks/02, benchmarks/03, and reports/arena_issue_2_replication.md for the full evidence.
+
 ### Prior conceptual and adversarial notes
 
 A static graph is not enough to recover dynamics: systems can share an unweighted graph while having different transition rules. If ICSI-G relies only on graph topology, it risks predicting identical phenomenal structure for systems whose causal dynamics differ. Conversely, using a full transition kernel may distinguish almost every non-isomorphic system without explaining which distinctions matter phenomenally.
@@ -72,9 +83,9 @@ Mathematical non-equivalence is not yet consciousness-theoretic non-equivalence.
 
 1. Write explicit, separate specifications for the four candidates in ICSI_G_CANDIDATES.md.
 2. Audit the definitions and primary sources for IIT 4.0 and any later version separately.
-3. Build minimal finite counterexamples, verify state-label invariance, and reproduce the claimed exhaustive two-unit baseline (including exact enumeration scope).
-4. Search for a **tie-free, complex-level discriminator** in which both candidates' definitions and subject-selection rules are fully applied.
-5. Define and stress-test subject selection: whole network, selected complex, nested, overlapping, and disconnected candidates.
+3. Build minimal finite counterexamples, verify state-label invariance, and reproduce the claimed exhaustive two-unit baseline (including exact enumeration scope). **Done 2026-10-20 (Arena): baseline reproduced with corrected scope; see benchmarks 02–03.**
+4. Search for a **tie-free, complex-level discriminator** in which both candidates' definitions and subject-selection rules are fully applied. **Partially done 2026-10-20: a tie-free complex-level case exists under IIT_4_0_2023 (S vs N); it is a mathematical discrimination of candidate B, not a phenomenal prediction, and it vanishes under IIT_4_0_2026.**
+5. Define and stress-test subject selection: whole network, selected complex, nested, overlapping, and disconnected candidates. **Two-unit baseline quantified 2026-10-20 (singleton complexes in 384/700 states); nested/overlapping/disconnected cases require 3+ units — next.**
 6. State an explicit bridge principle from causal object to phenomenal structure, then identify observations that would support or falsify it.
 7. Only after these steps, consider empirical paradigms and predictions.
 
@@ -119,3 +130,26 @@ The extraction rule marks an unweighted edge from current unit i to next-time un
 **Conclusion:** an unweighted influence graph does not determine the full transition dynamics. This is a mathematical counterexample to unweighted graph sufficiency only. It does not establish that either system is conscious, that their phenomenal character differs, or that IIT treats them as equivalent.
 
 The neutral model validation tests and influence-graph tests total 12. A local test run on a mirrored copy of the committed source passed all 12. A GitHub Actions workflow was added for Python 3.11–3.13; its remote status has not been independently verified in this session.
+
+## Replication checkpoint: 2026-10-20 (Arena, Issue #2)
+
+The committed code was executed on the actual checkout (not a mirror): the original 12 tests pass on CPython 3.11.2; the suite is now 29 tests on the PyPhi environment (CPython 3.13.16 built from source, PyPhi 2.0.0rc5.dev10+g134a8f31b pinned by commit — provenance in docs/REFERENCES.md).
+
+New executable artifacts:
+
+- `src/icsig/enumeration.py` — exhaustive enumeration and classification of all 256 labeled deterministic two-unit binary systems (successor maps, images, cycle structures, influence-graph classes).
+- `src/icsig/iit_comparison.py` — PyPhi-backed, version-pinned analysis layer (explicit big-endian/little-endian conversion, CES fingerprints, complex selection).
+- `examples/enumerate_reachable_systems.py`, `examples/iit_version_pinned_sweep.py` — reproduction scripts.
+- `results/iit_two_unit_sweep.json` — full sweep evidence (256 systems × 4 states × 2 formalisms).
+- `benchmarks/02_two_unit_enumeration.md`, `benchmarks/03_iit_version_pinned_comparison.md`, `reports/arena_issue_2_replication.md`.
+
+Headline reproduced/corrected results (all COMPUTATIONAL):
+
+1. The "700" figure = one-step-reachable (system, state) pairs (700 of 1024); labeled systems = 256. The phrasing in the prior record was ambiguous and is corrected.
+2. Under IIT_4_0_2023, S and N are a tie-free complex-level discrimination from the coarse influence graph (same graph, same φ_s = 2.0, different CES: Φ 4.0/2 relations vs Φ 2.0/0 relations).
+3. Under IIT_4_0_2026, the whole deterministic baseline has φ_s = 0 and no complexes — the discrimination is version-dependent.
+4. Singleton complexes occur in 384 of 700 analyzable states (whole network φ_s = 0 there).
+5. Kernel-distinct pairs with identical CES profiles exist only with empty CES; no two systems share a non-empty profile.
+6. All 16 influence-graph classes merge CES-distinct systems; IIT's object is state-dependent in 236/256 systems.
+
+The verdict is unchanged: ICSI-G remains under-specified, and no phenomenal prediction follows from these mathematical discriminations.

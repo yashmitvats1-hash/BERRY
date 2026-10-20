@@ -9,3 +9,6 @@ dist/
 .coverage
 htmlcov/
 .DS_Store
+
+# PyPhi run logs
+pyphi.log

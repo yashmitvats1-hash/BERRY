@@ -20,8 +20,35 @@ Accessed / checked: 2026-10-18. This file records authoritative sources and what
 
 4. **PyPhi project** — [GitHub repository](https://github.com/wmayner/pyphi), [current README](https://github.com/wmayner/pyphi/blob/main/README.md), [changelog](https://github.com/wmayner/pyphi/blob/main/CHANGELOG.md), [formalism version guide](https://pyphi.readthedocs.io/en/latest/theory/formalism-versions.html), and [IIT 4.0 demo notebook](https://pyphi.readthedocs.io/en/latest/examples/IIT_4.0_demo.html).
    - Current documentation distinguishes IIT_3_0, IIT_4_0_2023, and IIT_4_0_2026. The 2023 and 2026 formalisms can produce different system-integrated-information values on the same system/state.
-   - The 2026 formulation adds the condition φ_s = min{φ_c, φ_e, ii(s)} (check the primary paper's precise definitions and equation before independent implementation). The PyPhi changelog says deterministic examples may have φ_s = 0 under IIT_4_0_2026; this must not be generalized without checking system, state, and formalism assumptions.
+   - The 2026 formulation adds the condition φ_s = min{φ_c, φ_e, ii(s)} (check the primary paper's precise definitions and equation before independent implementation). The PyPhi changelog says deterministic examples may have φ_s = 0 under IIT_4_0_2026; this must not be generalized without checking system, state, and formalism assumptions. Benchmark 03 confirms it holds for all 256 deterministic two-unit systems at all reachable states.
    - The current PyPhi implementation is an important replication tool, not a substitute for reading primary theory sources. Pin the commit hash, Python version, formalism preset, and all configuration parameters in every benchmark. A mutable main branch is not a permanent reproduction environment.
+
+## Pinned computation environment (Benchmarks 02–03, 2026-10-20)
+
+- **PyPhi** `2.0.0rc5.dev10+g134a8f31b`, installed from
+  `github.com/wmayner/pyphi` at commit
+  `134a8f31b49db512322465ed3ba5da7194d362fd` (`main`,
+  2026-10-16). No PyPI release of PyPhi 2.0 existed at
+  computation time (PyPI's latest was 1.2.0, which implements
+  no IIT 4.0 formalism and does not import on Python 3.10+);
+  no final `v2.0.0` git tag existed either. **Re-verification
+  against a final tagged release is required when one is
+  published.**
+- **Python** CPython 3.13.16, built from source (python/cpython
+  tag `v3.13.16`) with OpenSSL 3.5.9 and zlib built from
+  source: the environment's system Python is 3.11.2 and PyPhi
+  2.0 requires Python >= 3.13. libffi 3.4.4 was compiled
+  manually from source (generated headers written from the
+  libffi templates) because the sandbox has no system libffi
+  development headers.
+- **Python packages** (PyPhi environment): numpy 2.5.4,
+  scipy 1.18.1, pandas 3.0.6, msgspec 0.22.0, joblib 1.6.0,
+  more-itertools 11.2.1, psutil 7.2.2, PyYAML 6.0.3,
+  tqdm 4.70.1, pytest 9.1.1.
+- **Core package environment** (dependency-free): CPython
+  3.11.2, pytest 9.1.1, numpy 2.4.6, scipy 1.17.1.
+- PyPhi install command:
+  `.venv313/bin/pip install "pyphi @ git+https://github.com/wmayner/pyphi.git@134a8f31b49db512322465ed3ba5da7194d362fd"`.
 
 ## Research claims to handle carefully
 
