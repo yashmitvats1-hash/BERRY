@@ -153,3 +153,5 @@ Headline reproduced/corrected results (all COMPUTATIONAL):
 6. All 16 influence-graph classes merge CES-distinct systems; IIT's object is state-dependent in 236/256 systems.
 
 The verdict is unchanged: ICSI-G remains under-specified, and no phenomenal prediction follows from these mathematical discriminations.
+
+Remote CI is now verified end-to-end: PR #6 (branch `arena/798e3e48-berry`) passed the GitHub Actions test matrix (Python 3.11–3.13) on 2026-10-20; the earlier "remote CI unverified" caveat is closed. The PyPhi-dependent CI job is pending maintainer review (patches/add_iit_tests_job.patch).

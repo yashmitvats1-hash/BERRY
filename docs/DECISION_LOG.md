@@ -48,3 +48,5 @@ Two deterministic two-unit systems (swap; invert-plus-copy) have the same unweig
 **Artifacts:** src/icsig/enumeration.py, src/icsig/iit_comparison.py, examples/enumerate_reachable_systems.py, examples/iit_version_pinned_sweep.py, tests/test_enumeration.py, tests/test_iit_comparison.py, results/iit_two_unit_sweep.json, benchmarks/02_two_unit_enumeration.md, benchmarks/03_iit_version_pinned_comparison.md, reports/arena_issue_2_replication.md.
 
 **CI note:** a proposed workflow addition (an `iit-tests` job installing the pinned PyPhi on Python 3.13) is saved as patches/add_iit_tests_job.patch, not committed: the submitting agent's GitHub token lacks the `workflows` permission. Maintainer review required. The existing unit-tests job continues to run the dependency-free and enumeration tests on Python 3.11–3.13.
+
+**CI verification:** the earlier "remote GitHub Actions result unverified" caveat is now closed: PR #6 (this branch) triggered the workflow on GitHub-hosted runners (Python 3.11/3.12/3.13) and passed (run 39393901583, 2026-10-20). Issue commenting by the agent token is blocked (403, no `issues: write` scope); the report is delivered in-repo instead.
