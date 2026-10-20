@@ -14,6 +14,14 @@ dependencies = []
 
 [project.optional-dependencies]
 dev = ["pytest>=8.0"]
+# PyPhi 2.0 is required for IIT comparisons. It is not on PyPI
+# at a version that implements IIT_4_0_2023 / IIT_4_0_2026 and
+# requires Python >= 3.13; install from the pinned commit:
+#   pip install "pyphi @ git+https://github.com/wmayner/pyphi.git@134a8f31b49db512322465ed3ba5da7194d362fd"
+# See docs/REFERENCES.md for the full pinned environment.
+iit = [
+    "pyphi @ git+https://github.com/wmayner/pyphi.git@134a8f31b49db512322465ed3ba5da7194d362fd",
+]
 
 [tool.setuptools]
 package-dir = { "" = "src" }

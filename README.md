@@ -17,6 +17,9 @@ The immediate work is theoretical specification and reproducibility. **Do not st
 - [Decision log](docs/DECISION_LOG.md) — dated decisions and changes to the research position.
 - [References and comparator versions](docs/REFERENCES.md) — primary sources, including the 2023 and 2026 IIT formulations.
 - [Benchmark 01](benchmarks/01_same_influence_graph_different_dynamics.md) — a minimal reproducible graph/dynamics counterexample.
+- [Benchmark 02](benchmarks/02_two_unit_enumeration.md) — exhaustive enumeration of the 256 two-unit deterministic systems; reconstructs the reported "700 reachable" figure under an explicit definition.
+- [Benchmark 03](benchmarks/03_iit_version_pinned_comparison.md) — the same baseline computed under pinned `IIT_4_0_2023` and `IIT_4_0_2026` (PyPhi 2.0, commit-pinned), including the S/N complex-level discrimination and its version dependence.
+- [Arena replication report](reports/arena_issue_2_replication.md) — Issue #2 deliverable with full evidence labels.
 
 ## Initial computational scaffold
 

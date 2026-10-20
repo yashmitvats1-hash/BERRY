@@ -1,0 +1,32 @@
+diff --git a/.github/workflows/tests.yml b/.github/workflows/tests.yml
+index 3c8f2fe..d9f2809 100644
+--- a/.github/workflows/tests.yml
++++ b/.github/workflows/tests.yml
+@@ -24,3 +24,27 @@ jobs:
+         run: python -m pip install -e ".[dev]"
+       - name: Run tests
+         run: python -m pytest -q
++
++  # IIT comparison tests require PyPhi 2.0, which is not on PyPI
++  # and needs Python >= 3.13. Pinned by commit; see
++  # docs/REFERENCES.md. If PyPhi's final 2.0.0 tag is published,
++  # switch this pin to the tag and re-verify.
++  iit-tests:
++    runs-on: ubuntu-latest
++    steps:
++      - name: Check out repository
++        uses: actions/checkout@v4
++      - name: Set up Python
++        uses: actions/setup-python@v5
++        with:
++          python-version: "3.13"
++      - name: Install package, tests, and pinned PyPhi
++        run: |
++          python -m pip install -e ".[dev]"
++          python -m pip install "pyphi @ git+https://github.com/wmayner/pyphi.git@134a8f31b49db512322465ed3ba5da7194d362fd"
++      - name: Run tests
++        run: python -m pytest -q
++      - name: Reproduce the two-unit sweep
++        run: |
++          PYPHI_WELCOME_OFF=1 python examples/iit_version_pinned_sweep.py results/ci_sweep.json
++          python examples/enumerate_reachable_systems.py
