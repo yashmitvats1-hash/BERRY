@@ -18,6 +18,15 @@ The immediate work is theoretical specification and reproducibility. **Do not st
 - [References and comparator versions](docs/REFERENCES.md) — primary sources, including the 2023 and 2026 IIT formulations.
 - [Benchmark 01](benchmarks/01_same_influence_graph_different_dynamics.md) — a minimal reproducible graph/dynamics counterexample.
 
+## 2026-11-15 additions (proposed, pending project-lead integration)
+
+- [Phenomenal consciousness and the conditions for genuine experience](docs/PHENOMENAL_CONSCIOUSNESS_2026-11-15.md) — what the explanandum is, decomposed; what "genuinely experiences" commits to; and how both apply to ICSI-G.
+- [Hypothesis ledger](docs/HYPOTHESIS_LEDGER_2026-11-15.md) — eight falsifiable hypotheses (H1–H8) about bridge principles, determinism, subject selection, and phenomenal structure, each with a prediction, a falsifier, an owner, and an evidence label.
+- [Benchmark 02](benchmarks/02_stochasticity_subject_rules_and_twins.md) — specification for stochastic, isolated-component, and feedforward fixtures, plus a six-step computation protocol. Marked specification, not result.
+- [DeepSeek follow-up packet](agent_packets/FOLLOWUP_2026-11-15_BRIDGE_AND_HYPOTHESES.md) — offline packet for the adversarial review of H2, H3, H4, and H8.
+
+Two findings from that work constrain the benchmark programme and are recorded in the decision log: the unfolding argument against causal-structure theories applies to ICSI-G and had not previously been recorded, and deterministic fixtures cannot support a *structural* comparison against IIT_4_0_2026, which assigns φ_s = 0 to every fully deterministic system. Neither finding establishes a discriminator, and the current verdict on ICSI-G is unchanged.
+
 ## Initial computational scaffold
 
 A small, dependency-light representation of finite binary transition systems lives in src/icsig/. It validates input shape and probabilities only. It does **not** claim that a transition matrix by itself is a sufficient causal model, a measure of consciousness, or an implementation of IIT or ICSI-G.
